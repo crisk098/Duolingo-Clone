@@ -756,6 +756,23 @@ export function App() {
                   <span className="nav-item-label">REA Inspector</span>
                 </button>
               </li>
+
+              <li>
+                <a
+                  id="nav-download-apk-link"
+                  href="/Duolingo-Clone.apk"
+                  download="Duolingo-Clone.apk"
+                  className="nav-item-btn"
+                  style={{
+                    textDecoration: 'none',
+                    color: 'var(--duo-green)',
+                    borderColor: 'rgba(88, 204, 2, 0.35)',
+                  }}
+                >
+                  <span className="nav-icon-badge">📱</span>
+                  <span className="nav-item-label">Baixar APK</span>
+                </a>
+              </li>
             </ul>
           </div>
         </aside>

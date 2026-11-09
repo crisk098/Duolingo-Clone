@@ -99,7 +99,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onLogin, soundEnabled }) =
           </span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <a
+            id="header-download-apk-btn"
+            href="/Duolingo-Clone.apk"
+            download="Duolingo-Clone.apk"
+            className="duo-btn duo-btn-green duo-btn-sm"
+          >
+            📱 Baixar APK Android
+          </a>
           <span style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-secondary)', textTransform: 'uppercase' }}>
             Idioma do site: Português 🇧🇷
           </span>
