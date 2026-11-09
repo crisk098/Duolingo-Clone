@@ -45,7 +45,7 @@ fi
 
 echo "sdk.dir=$SDK_DIR" > "$ROOT_DIR/android/local.properties"
 
-if [ -f /etc/ssl/certs/ca-certificates.crt ] && [ ! -f /tmp/java-cacerts ]; then
+if [ -n "${HTTP_PROXY:-}" ] && [ -f /etc/ssl/certs/ca-certificates.crt ] && [ ! -f /tmp/java-cacerts ]; then
   python3 -c '
 import re, subprocess, tempfile, os
 with open("/etc/ssl/certs/ca-certificates.crt") as f:
