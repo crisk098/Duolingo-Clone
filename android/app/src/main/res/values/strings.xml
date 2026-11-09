@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Duolingo Clone</string>
+    <string name="title_activity_main">Duolingo Clone</string>
+    <string name="package_name">com.crisk098.duolingoclone</string>
+    <string name="custom_url_scheme">com.crisk098.duolingoclone</string>
+</resources>

@@ -59,3 +59,23 @@ Reescrita completa em **React + TypeScript + Vite + CSS Moderno** do aplicativo 
 npm install
 npm run dev
 ```
+
+---
+
+## 📱 Versão Nativa Android (APK Completo)
+
+O projeto inclui suporte nativo para **Android** via **Capacitor (`com.crisk098.duolingoclone`)** com ponte nativa Java `AndroidTTS` ([MainActivity.java](android/app/src/main/java/com/crisk098/duolingoclone/MainActivity.java)) que conecta o motor de pronúncia `speakText` ao `android.speech.tts.TextToSpeech` do sistema Android.
+
+### Verificação REA da Assinatura do APK (`inspect_apk_signature`)
+
+- **APK Gerado:** `Duolingo-Clone.apk` (`4.129.529 bytes`)
+- **APK SHA-256:** `ee50d39a7b842f3f7c468ba9493cf471923f5c0dcf4a88e7dee48409cb2c1802`
+- **REA Evidence ID:** `ev_41bb17f642205f0ee97c17819236545ee71c8a299469875ad2ad93a90cfdf1d4` (`ev_38a66bb856e9fc2eb258f9174979212246eb16d8c443ad115e184885a22855ef`)
+- **Esquema de Assinatura:** Android APK Signature Scheme **v2** (`self_consistent: true`, certificado `2aff4f581442a1be75868a066853ff5bd72bc0fbdc2ecc49f17ca9046fb29963`)
+
+### Como Gerar o APK Localmente
+
+```bash
+npm run android:apk
+# O APK será gerado em: android/app/build/outputs/apk/debug/app-debug.apk
+```

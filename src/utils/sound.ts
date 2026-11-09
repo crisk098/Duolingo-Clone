@@ -1,4 +1,14 @@
-// Web Audio API Synthesizer for Duolingo UI Chimes & Web Speech API TTS
+// Web Audio API Synthesizer for Duolingo UI Chimes & Native Android / Web Speech API TTS
+
+interface AndroidTTSBridge {
+  speak: (text: string, langCode: string, slow: boolean) => void;
+}
+
+declare global {
+  interface Window {
+    AndroidTTS?: AndroidTTSBridge;
+  }
+}
 
 let audioCtx: AudioContext | null = null;
 
@@ -84,18 +94,32 @@ export function playFanfareSound(enabled = true): void {
 }
 
 export function speakText(text: string, langCode = 'en-US', slow = false): void {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-    playClickSound(true);
-    return;
+  if (typeof window === 'undefined') return;
+
+  // 1. Native Android TextToSpeech Bridge (when running inside the Android APK)
+  if (window.AndroidTTS && typeof window.AndroidTTS.speak === 'function') {
+    try {
+      window.AndroidTTS.speak(text, langCode, slow);
+      return;
+    } catch {
+      // Fallback to Web Speech API
+    }
   }
-  try {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = langCode;
-    utterance.rate = slow ? 0.58 : 0.96;
-    utterance.pitch = 1.02;
-    window.speechSynthesis.speak(utterance);
-  } catch {
-    playClickSound(true);
+
+  // 2. Web Speech API Synthesis
+  if ('speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = langCode;
+      utterance.rate = slow ? 0.58 : 0.96;
+      utterance.pitch = 1.02;
+      window.speechSynthesis.speak(utterance);
+      return;
+    } catch {
+      // Fallback to audio click
+    }
   }
+
+  playClickSound(true);
 }
