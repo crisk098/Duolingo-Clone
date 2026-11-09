@@ -72,8 +72,9 @@ fi
 
 ./gradlew assembleDebug --no-daemon
 
-cp "$ROOT_DIR/android/app/build/outputs/apk/debug/app-debug.apk" "$ROOT_DIR/Duolingo-Clone.apk"
+cp "$ROOT_DIR/android/app/build/outputs/apk/debug/app-debug.apk" "$ROOT_DIR/android/Duolingo-Clone.apk"
 cp "$ROOT_DIR/android/app/build/outputs/apk/debug/app-debug.apk" "$ROOT_DIR/public/Duolingo-Clone.apk"
+rm -f "$ROOT_DIR/Duolingo-Clone.apk"
 
 echo "==> APK generated successfully:"
-ls -lh "$ROOT_DIR/Duolingo-Clone.apk" "$ROOT_DIR/android/app/build/outputs/apk/debug/app-debug.apk"
+ls -lh "$ROOT_DIR/android/Duolingo-Clone.apk" "$ROOT_DIR/android/app/build/outputs/apk/debug/app-debug.apk"
